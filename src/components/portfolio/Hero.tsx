@@ -46,7 +46,8 @@ const Hero = () => {
           >
             I build clean, accessible, and performance-driven web applications,
             transforming ideas into impactful digital products with a strong
-            focus on user experience, scalability, and maintainable architecture.
+            focus on user experience, scalability, and maintainable
+            architecture.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -67,6 +68,27 @@ const Hero = () => {
               className="inline-flex justify-center items-center px-6 py-3 sm:px-8 sm:py-4 border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-all duration-300"
             >
               Get In Touch
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1VMAi9M0pDM91VNeELTkPo3dGfVgYEBER/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center px-8 py-4
+             rounded-xl font-semibold tracking-wide text-white
+             bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-600
+             border border-pink-400/50
+             shadow-[0_10px_28px_-8px_rgba(236,72,153,0.55)]
+             hover:scale-[1.06]
+             transition-all duration-300 ease-out
+             overflow-hidden"
+            >
+              {/* subtle highlight sweep */}
+              <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <span className="relative flex items-center gap-2">
+                <span className="text-lg">📄</span>
+                View Resume
+              </span>
             </a>
           </motion.div>
 
