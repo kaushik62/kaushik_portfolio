@@ -129,7 +129,7 @@ const Projects = () => {
               <span className="text-2xl sm:text-3xl font-semibold">
                 Projects
               </span>
-              <span className="hidden md:block h-px bg-border flex-1 max-w-xs" />
+              <span className="md:block h-px bg-border flex-1 max-w-xs" />
             </h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Selected projects that demonstrate my approach to building
