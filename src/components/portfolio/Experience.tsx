@@ -52,7 +52,7 @@ const Experience = () => {
             <span className="text-lg sm:text-xl md:text-2xl">
               Where I've Worked
             </span>
-            <span className="hidden md:block h-px bg-border flex-1 max-w-xs" />
+            <span className="md:block h-px bg-border flex-1 max-w-xs" />
           </h2>
 
           {/* Content */}
