@@ -38,7 +38,9 @@ const Footer = () => {
             className="text-muted-foreground hover:text-primary transition-colors text-sm font-mono"
           >
             <p>Designed & Built by Kaushik Gupta</p>
-            <p className="mt-2">© 2026 All Rights Reserved</p>
+            <p className="mt-2">
+              © {new Date().getFullYear()} All Rights Reserved
+            </p>
           </a>
         </div>
       </div>
