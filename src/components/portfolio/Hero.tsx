@@ -90,7 +90,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1VMAi9M0pDM91VNeELTkPo3dGfVgYEBER/view?usp=sharing"
+              href="https://drive.google.com/file/d/1WDicQnU30hrhYwjXLA5j658OENtM5HAc/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-xl font-semibold
