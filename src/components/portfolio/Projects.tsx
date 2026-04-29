@@ -4,6 +4,30 @@ import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
+    title: "Interview AI - Smart Interview Preparation Platform",
+    description:
+      "An AI-powered interview preparation platform designed to help users practice technical and HR interviews effectively. Users can generate role-based interview questions, receive AI-generated answers, and improve confidence through real-time practice sessions. Features personalized learning experience and progress tracking.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1777469566/Interview_AI_q4syij.png",
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MySQL",
+      "OpenAI API",
+      "Gemini API",
+      "HTML5",
+      "CSS3",
+      "Javascript",
+      "Tailwind CSS",
+      "Vercel",
+      "Render",
+    ],
+    github: "https://github.com/kaushik62/interview_ai",
+    live: "https://interview-ai-orpin-nu.vercel.app/",
+    featured: true,
+  },
+  {
     title: "Connectify - Social Media Application",
     description:
       "A scalable social media platform built to foster meaningful connections and real-time interaction. Users can create and share posts, like, comment, and chat instantly, enhancing engagement. Features follow/unfollow functionality to deliver personalized feeds and a connected social experience.",
@@ -37,20 +61,28 @@ const projects = [
     live: "https://weatherappp9977.netlify.app/",
     featured: true,
   },
-  {
-    title: "E-Commerce Shopping",
-    description:
-      "A modern e-commerce shopping platform designed for a smooth and engaging online buying experience. Features product browsing, cart management, and real-time updates for seamless interaction. Built to be fast, scalable, and user-friendly, delivering an intuitive shopping journey",
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1768323115/pexels-cottonbro-5077393_yy3uvg.jpg",
-    tech: ["HTML5", "CSS3", "Javascript", "Tailwind CSS", "Firebase"],
-    github: "https://github.com/kaushik62/e_shopping",
-    live: "https://eshopping99.netlify.app/",
-    featured: true,
-  },
 ];
 
 const otherProjects = [
+  {
+    title: "Interview AI - Smart Interview Preparation Platform",
+    description:
+      "An AI-powered interview preparation platform with role-based questions, mock interviews, AI-generated answers, resume review, and progress tracking for better placement success.",
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MySQL",
+      "OpenAI API",
+      "Gemini API",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Vercel",
+      "Render",
+    ],
+    github: "https://github.com/kaushik62/interview_ai",
+  },
   {
     title: "Connectify - Social Media Application",
     description:
