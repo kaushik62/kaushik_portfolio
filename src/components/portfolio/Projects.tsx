@@ -128,14 +128,7 @@ const otherProjects = [
       "A digital clock application displaying real-time hours, minutes, and seconds with a clean, responsive interface for accurate time tracking.",
     tech: ["HTML5", "CSS3", "JavaScript"],
     github: "https://github.com/kaushik62/clock",
-  },
-  {
-    title: "Temperature Converter",
-    description:
-      "A temperature converter application that instantly converts values between Celsius and Fahrenheit with accurate results and a simple interface.",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    github: "https://github.com/kaushik62/temperature_converter",
-  },
+  }
 ];
 
 const Projects = () => {
