@@ -59,6 +59,7 @@ const Navbar = () => {
           >
             <a
               href="https://drive.google.com/file/d/1gutN6OtgPlnXYgihhs0zl_MLhY6WwD3q/view?usp=sharing"
+
               className="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all duration-300"
             >
               Resume
