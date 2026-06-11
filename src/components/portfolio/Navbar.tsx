@@ -58,7 +58,7 @@ const Navbar = () => {
             transition={{ delay: 0.5 }}
           >
             <a
-              href="https://drive.google.com/file/d/1eobKC63S4HjymXTSgogxzq-exV0gEhhH/view?usp=sharing"
+              href="https://drive.google.com/file/d/1dqPjIIEhWTRFCBTtgn3fcMscZQmd2QNB/view?usp=sharing"
 
               className="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all duration-300"
             >
