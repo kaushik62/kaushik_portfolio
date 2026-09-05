@@ -8,17 +8,13 @@ const projects = [
     description:
       "An AI-powered interview preparation platform designed to help users practice technical and HR interviews effectively. Users can generate role-based interview questions, receive AI-generated answers, and improve confidence through real-time practice sessions. Features personalized learning experience and progress tracking.",
     image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1777469566/Interview_AI_q4syij.png",
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788587647/Interview_AI_qis7om.png",
     tech: [
       "React.js",
       "Node.js",
       "Express.js",
       "MySQL",
-      "OpenAI API",
-      "Gemini API",
-      "HTML5",
-      "CSS3",
-      "Javascript",
+      "LLM API",
       "Tailwind CSS",
       "Vercel",
       "Render",
@@ -27,108 +23,48 @@ const projects = [
     live: "https://interview-ai-orpin-nu.vercel.app/",
     featured: true,
   },
-  {
-    title: "Connectify - Social Media Application",
-    description:
-      "A scalable social media platform built to foster meaningful connections and real-time interaction. Users can create and share posts, like, comment, and chat instantly, enhancing engagement. Features follow/unfollow functionality to deliver personalized feeds and a connected social experience.",
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1768323413/pexels-tranmautritam-69432_ehn2rp.jpg",
-    tech: [
-      "React.js",
-      "Node.js",
-      "PostgreSQL",
-      "MySQL",
-      "WebSockets",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS",
-      "Vercel",
-      "Cloudinary",
-    ],
-    github: "https://github.com/kaushik62/connectify",
-    live: "https://connectify-ten-xi.vercel.app/",
-    featured: true,
-  },
-  {
-    title: "Weather Application Dashboard",
-    description:
-      "A real-time weather application that provides accurate, up-to-date weather information for any location. Displays live temperature, humidity, wind speed, and forecast data with a clean, user-friendly interface. Built for performance and reliability, enabling users to track weather conditions instantly.",
 
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1768323630/pexels-ian-panelo-35642583_ehl7w2.jpg",
-    tech: ["HTML5", "CSS3", "Javascript", "Firebase", "OpenWeather API"],
-    github: "https://github.com/kaushik62/realtime_weather_app",
-    live: "https://weatherappp9977.netlify.app/",
-    featured: true,
-  },
-];
-
-const otherProjects = [
   {
-    title: "Interview AI - Smart Interview Preparation Platform",
+    title: "DocInsights AI – AI Powered Document Assistant",
     description:
-      "An AI-powered interview preparation platform with role-based questions, mock interviews, AI-generated answers, resume review, and progress tracking for better placement success.",
+      "An AI-powered document assistant that allows users to upload documents, ask questions, and get accurate AI generated answers based on the provided content. Built with a modern full stack architecture and LLM integration for intelligent document analysis.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788586907/DocInsights_AI_iym0bf.png",
     tech: [
       "React.js",
       "Node.js",
       "Express.js",
-      "MySQL",
-      "OpenAI API",
-      "Gemini API",
-      "HTML5",
-      "CSS3",
+      "Mongo DB",
+      "LLM API",
+      "RAG",
       "Tailwind CSS",
-      "Vercel",
-      "Render",
+      "Docker",
     ],
-    github: "https://github.com/kaushik62/interview_ai",
+    github: "https://github.com/kaushik62/doc_insights_ai",
+    live: "https://doc-insights-ai.vercel.app/",
+    featured: true,
   },
+
   {
-    title: "Connectify - Social Media Application",
+    title: "Investo – Virtual Stock Trading Platform",
     description:
-      "A scalable social media platform with real-time posts, likes, comments, chat, and follow features for personalized user engagement.",
+      "A virtual stock trading platform that allows users to buy and sell stocks using simulated funds, track portfolio performance, and monitor real time market data. Built with a full-stack architecture and WebSockets for real-time updates.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788587401/Investo_o8u13n.png",
     tech: [
       "React.js",
       "Node.js",
-      "PostgreSQL",
-      "MySQL",
+      "Express.js",
+      "Mongo DB",
       "WebSockets",
-      "HTML5",
-      "CSS3",
+      "JavaScript",
       "Tailwind CSS",
-      "Vercel",
-      "Cloudinary",
+      "Docker",
     ],
-    github: "https://github.com/kaushik62/connectify",
+    github: "https://github.com/kaushik62/investo",
+    live: "https://investo-eight.vercel.app/",
+    featured: true,
   },
-  {
-    title: "E-Commerce Shopping",
-    description:
-      "A modern e-commerce platform enabling seamless product browsing, cart management, real-time updates, and a fast, scalable, user-friendly shopping experience.",
-    tech: ["HTML5", "CSS3", "Javascript", "Tailwind CSS", "Firebase"],
-    github: "https://github.com/kaushik62/e_shopping",
-  },
-  {
-    title: "Weather Application Dashboard",
-    description:
-      "A real-time weather application showing live temperature, humidity, wind speed, and forecasts with a clean, reliable, user-friendly interface.",
-    tech: ["HTML5", "CSS3", "Javascript", "Firebase", "OpenWeather API"],
-    github: "https://github.com/kaushik62/realtime_weather_app",
-  },
-  {
-    title: "Task Manager - Todo List",
-    description:
-      "A task manager - Todo list application that helps users organize, track, and complete daily tasks efficiently with a simple interface.",
-    tech: ["HTML, CSS, React.js, Node Js, Tailwind CSS, Cloudinary, Vercel"],
-    github: "https://github.com/kaushik62/todo_list",
-  },
-  {
-    title: "Digital Clock",
-    description:
-      "A digital clock application displaying real-time hours, minutes, and seconds with a clean, responsive interface for accurate time tracking.",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    github: "https://github.com/kaushik62/clock",
-  }
 ];
 
 const Projects = () => {
@@ -243,47 +179,6 @@ const Projects = () => {
               </article>
             ))}
           </div>
-
-          {/* Divider */}
-          <div className="my-32 h-px bg-border" />
-
-          {/* Other Projects */}
-          <section>
-            <h3 className="text-xl sm:text-2xl font-semibold text-center mb-12">
-              Other Projects
-            </h3>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherProjects.map((project) => (
-                <article
-                  key={project.title}
-                  className="rounded-xl border border-border p-6 hover:-translate-y-1 hover:shadow-md transition-all"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="font-semibold">{project.title}</h4>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      <Github size={18} />
-                    </a>
-                  </div>
-
-                  <p className="text-muted-foreground text-sm mb-6">
-                    {project.description}
-                  </p>
-
-                  <ul className="flex flex-wrap gap-2 text-xs font-mono text-muted-foreground">
-                    {project.tech.map((tech) => (
-                      <li key={tech}>{tech}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </section>
         </motion.div>
       </div>
     </section>
