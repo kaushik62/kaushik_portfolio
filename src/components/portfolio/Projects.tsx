@@ -3,47 +3,6 @@ import { useRef } from "react";
 import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
-  {
-    title: "Interview AI - Smart Interview Preparation Platform",
-    description:
-      "An AI-powered interview preparation platform designed to help users practice technical and HR interviews effectively. Users can generate role-based interview questions, receive AI-generated answers, and improve confidence through real-time practice sessions. Features personalized learning experience and progress tracking.",
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788587647/Interview_AI_qis7om.png",
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "LLM API",
-      "Tailwind CSS",
-      "Vercel",
-      "Render",
-    ],
-    github: "https://github.com/kaushik62/interview_ai",
-    live: "https://interview-ai-orpin-nu.vercel.app/",
-    featured: true,
-  },
-
-  {
-    title: "DocInsights AI – AI Powered Document Assistant",
-    description:
-      "An AI-powered document assistant that allows users to upload documents, ask questions, and get accurate AI generated answers based on the provided content. Built with a modern full stack architecture and LLM integration for intelligent document analysis.",
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788586907/DocInsights_AI_iym0bf.png",
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Mongo DB",
-      "LLM API",
-      "RAG",
-      "Tailwind CSS",
-      "Docker",
-    ],
-    github: "https://github.com/kaushik62/doc_insights_ai",
-    live: "https://doc-insights-ai.vercel.app/",
-    featured: true,
-  },
 
   {
     title: "Investo – Virtual Stock Trading Platform",
@@ -65,6 +24,54 @@ const projects = [
     live: "https://investo-eight.vercel.app/",
     featured: true,
   },
+
+  {
+    title: "DocInsights – AI Document Assistant",
+    description:
+      "An AI-powered document assistant that allows users to upload documents, ask questions, and get accurate AI generated answers based on the provided content. Built with a modern full stack architecture and LLM integration for intelligent document analysis.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788586907/DocInsights_AI_iym0bf.png",
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Mongo DB",
+      "LLM API",
+      "RAG",
+      "Tailwind CSS",
+      "Docker",
+    ],
+    github: "https://github.com/kaushik62/doc_insights_ai",
+    live: "https://doc-insights-ai.vercel.app/",
+    featured: true,
+  },
+
+
+  {
+    title: "Interview AI - Smart Interview Preparation Platform",
+    description:
+      "An AI-powered interview preparation platform designed to help users practice technical and HR interviews effectively. Users can generate role-based interview questions, receive AI-generated answers, and improve confidence through real-time practice sessions. Features personalized learning experience and progress tracking.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788587647/Interview_AI_qis7om.png",
+    tech: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MySQL",
+      "LLM API",
+      "Tailwind CSS",
+      "Vercel",
+      "Render",
+    ],
+    github: "https://github.com/kaushik62/interview_ai",
+    live: "https://interview-ai-orpin-nu.vercel.app/",
+    featured: true,
+  },
+
+
+
+  
+  
 ];
 
 const Projects = () => {
