@@ -3,6 +3,26 @@ import { useRef } from "react";
 import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
+  {
+    title: "Eventify – AI-Powered Event Booking Platform",
+    description:
+      "An AI-powered event booking platform that allows users to discover and book events, organizers to create and manage events, and admins to oversee the platform. Built with a full-stack architecture featuring secure authentication, role-based access control, and online payments.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788878878/event_booking_m7qhys.png",
+    tech: [
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "JavaScript",
+      "TypeScript",
+      "Tailwind CSS",
+      "Razorpay",
+    ],
+    github: "https://github.com/kaushik62/eventify",
+    live: "https://eventify-sigma-dusky.vercel.app/",
+    featured: true,
+  },
 
   {
     title: "Investo – Virtual Stock Trading Platform",
@@ -26,28 +46,6 @@ const projects = [
   },
 
   {
-    title: "DocInsights – AI Document Assistant",
-    description:
-      "An AI-powered document assistant that allows users to upload documents, ask questions, and get accurate AI generated answers based on the provided content. Built with a modern full stack architecture and LLM integration for intelligent document analysis.",
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788586907/DocInsights_AI_iym0bf.png",
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Mongo DB",
-      "LLM API",
-      "RAG",
-      "Tailwind CSS",
-      "Docker",
-    ],
-    github: "https://github.com/kaushik62/doc_insights_ai",
-    live: "https://doc-insights-ai.vercel.app/",
-    featured: true,
-  },
-
-
-  {
     title: "Interview AI - Smart Interview Preparation Platform",
     description:
       "An AI-powered interview preparation platform designed to help users practice technical and HR interviews effectively. Users can generate role-based interview questions, receive AI-generated answers, and improve confidence through real-time practice sessions. Features personalized learning experience and progress tracking.",
@@ -67,11 +65,6 @@ const projects = [
     live: "https://interview-ai-orpin-nu.vercel.app/",
     featured: true,
   },
-
-
-
-  
-  
 ];
 
 const Projects = () => {
