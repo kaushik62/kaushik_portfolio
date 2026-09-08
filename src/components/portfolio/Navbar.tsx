@@ -68,7 +68,7 @@ const Navbar = () => {
             href="#"
             className="text-xl font-bold font-mono gradient-text hover:opacity-80 transition-opacity"
           >
-            {"<KG />"}
+            {"<Kaushik Gupta />"}
           </a>
 
           {/* Desktop Menu */}

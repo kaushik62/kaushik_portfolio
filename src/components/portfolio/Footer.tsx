@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Left — Logo */}
           <a href="#" className="font-mono text-sm gradient-text font-bold hover:opacity-80 transition-opacity">
-            {"<KG />"}
+            {"<Kaushik Gupta />"}
           </a>
 
           {/* Center — Copyright */}
