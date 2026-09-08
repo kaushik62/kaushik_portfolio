@@ -5,9 +5,8 @@ import { Github, Linkedin, Mail } from "lucide-react";
 
 const ROLES = [
   "Full-Stack MERN Developer",
-  "Next.js Enthusiast",
-  "UI/UX Focused Engineer",
-  "Open Source Contributor",
+  "Backend Developer",
+  "Frontend Developer",
 ];
 
 const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
@@ -69,7 +68,12 @@ const Hero = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-    visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    },
   };
 
   return (
@@ -81,14 +85,18 @@ const Hero = () => {
       <div className="absolute inset-0 -z-20 bg-[#020617]" />
 
       {/* Radial Glow — primary */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10
         w-[500px] h-[500px] md:w-[700px] md:h-[700px]
-        bg-teal-400/10 blur-[150px] rounded-full pointer-events-none" />
+        bg-teal-400/10 blur-[150px] rounded-full pointer-events-none"
+      />
 
       {/* Secondary indigo glow */}
-      <div className="absolute top-1/4 right-1/4 -z-10
+      <div
+        className="absolute top-1/4 right-1/4 -z-10
         w-[300px] h-[300px]
-        bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
+        bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none"
+      />
 
       {/* Particles */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -139,8 +147,7 @@ const Hero = () => {
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl
               font-bold leading-[1.05] text-slate-100 mb-5"
           >
-            Kaushik{" "}
-            <span className="gradient-text">Gupta</span>
+            Kaushik <span className="gradient-text">Gupta</span>
           </motion.h1>
 
           {/* Typewriter Role */}
@@ -211,9 +218,21 @@ const Hero = () => {
             className="flex gap-6 mt-10 justify-center sm:justify-start"
           >
             {[
-              { icon: Github, href: "https://github.com/kaushik62", label: "GitHub" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/kaushikgupta256/", label: "LinkedIn" },
-              { icon: Mail, href: "mailto:kaushik62041@gmail.com", label: "Email" },
+              {
+                icon: Github,
+                href: "https://github.com/kaushik62",
+                label: "GitHub",
+              },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/in/kaushikgupta256/",
+                label: "LinkedIn",
+              },
+              {
+                icon: Mail,
+                href: "mailto:kaushik62041@gmail.com",
+                label: "Email",
+              },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -241,7 +260,9 @@ const Hero = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-slate-600 font-mono tracking-widest uppercase">Scroll</span>
+        <span className="text-xs text-slate-600 font-mono tracking-widest uppercase">
+          Scroll
+        </span>
         <ChevronDown className="w-5 h-5 text-teal-400/60 animate-bounce-down" />
       </motion.div>
     </section>
