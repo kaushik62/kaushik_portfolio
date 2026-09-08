@@ -6,16 +6,18 @@ import Projects from "@/components/portfolio/Projects";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 import Education from "@/components/portfolio/Education";
+import CursorGlow from "@/components/portfolio/CursorGlow";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <CursorGlow />
       <Navbar />
       <main>
         <Hero />
         <About />
         <Experience />
-        <Education/>
+        <Education />
         <Projects />
         <Contact />
       </main>

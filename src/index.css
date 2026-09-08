@@ -68,6 +68,21 @@
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(222 47% 6%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(174 72% 56% / 0.4);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(174 72% 56% / 0.7);
+  }
 }
 
 @layer components {
@@ -99,4 +114,81 @@
   .section-subheading {
     @apply text-muted-foreground text-lg max-w-2xl;
   }
+
+  /* Skill badge */
+  .skill-badge {
+    @apply px-3 py-1.5 rounded-lg text-xs font-mono font-medium
+      border border-border bg-muted/40 text-muted-foreground
+      hover:border-primary/50 hover:text-primary hover:bg-primary/5
+      transition-all duration-200 cursor-default;
+  }
+
+  /* Timeline card */
+  .timeline-card {
+    @apply relative pl-6 border-l-2 border-border
+      hover:border-primary/60 transition-colors duration-300;
+  }
+
+  /* Project card */
+  .project-card {
+    @apply rounded-2xl border border-border bg-card/60
+      backdrop-blur-sm overflow-hidden
+      hover:border-primary/40 hover:shadow-[0_0_30px_-5px_hsl(174_72%_56%/0.2)]
+      transition-all duration-300 group;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(174 72% 56% / 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 hsl(174 72% 56% / 0.4); }
+  70% { box-shadow: 0 0 0 14px hsl(174 72% 56% / 0); }
+  100% { box-shadow: 0 0 0 0 hsl(174 72% 56% / 0); }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.4; }
+  33% { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
+  66% { transform: translateY(10px) translateX(-8px); opacity: 0.3; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-blink-cursor {
+  animation: blink-cursor 1s step-end infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.animate-particle {
+  animation: particle-float linear infinite;
 }
