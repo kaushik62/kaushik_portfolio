@@ -154,17 +154,6 @@ const About = () => {
                   />
                 </div>
               </div>
-
-              {/* Floating decorative orb */}
-              <div className="absolute -bottom-6 -right-6 w-20 h-20 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-2xl animate-float">
-                💻
-              </div>
-
-              {/* Stats chip */}
-              <div className="absolute -top-4 -left-4 glass-card rounded-xl px-3 py-2 text-center border border-border/80">
-                <p className="text-primary font-bold text-lg font-mono">3+</p>
-                <p className="text-muted-foreground text-[10px] font-mono">Projects</p>
-              </div>
             </div>
           </div>
         </motion.div>
