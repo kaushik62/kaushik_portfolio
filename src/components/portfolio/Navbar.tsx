@@ -128,7 +128,7 @@ const Navbar = () => {
           <button
             id="mobile-menu-toggle"
             type="button"
-            className="md:hidden p-2 rounded-lg text-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+            className="relative z-50 md:hidden min-h-11 min-w-11 p-2 rounded-lg text-foreground hover:text-primary hover:bg-primary/5 transition-colors touch-manipulation"
             onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -153,7 +153,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="md:hidden overflow-hidden"
+              className="relative z-40 md:hidden overflow-hidden pointer-events-auto"
             >
               <div className="glass-card mt-2 mx-4 rounded-xl border border-border/50">
                 <ul className="py-4 px-6 space-y-1">
