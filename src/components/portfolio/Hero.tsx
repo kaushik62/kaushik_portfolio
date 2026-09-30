@@ -198,7 +198,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/11ltwidFhizMMaAUq1fpiPuqsIGCEOfjU/view?usp=sharing"
+              href="https://drive.google.com/file/d/1gEgGH27WLdLINMu7BHrsdlbGiXHS1XyT/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-xl font-semibold
