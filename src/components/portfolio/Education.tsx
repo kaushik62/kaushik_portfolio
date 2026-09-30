@@ -91,7 +91,7 @@ const Education = () => {
 
             <div className="space-y-10">
               {education.map((edu, index) => {
-                const colors = colorMap[edu.color];
+                const colors = colorMap[edu.color] || colorMap.teal;
                 return (
                   <motion.div
                     key={edu.institute}

@@ -103,7 +103,7 @@ const About = () => {
                   Technologies I work with:
                 </p>
                 {skillCategories.map((cat) => {
-                  const colors = colorMap[cat.color];
+                  const colors = colorMap[cat.color] || colorMap.teal;
                   return (
                     <div key={cat.label}>
                       <span

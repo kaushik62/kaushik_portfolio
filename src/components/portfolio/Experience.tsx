@@ -32,16 +32,18 @@ const experiences = [
   },
 ];
 
-const colorMap: Record<string, { border: string; dot: string; badge: string; glow: string }> = {
+const colorMap: Record<string, { border: string; dotBg: string; dotGlow: string; badge: string; glow: string }> = {
   teal: {
     border: "border-teal-400/50 hover:border-teal-400",
-    dot: "bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.6)]",
+    dotBg: "bg-teal-400",
+    dotGlow: "bg-teal-400 shadow-[0_0_12px_rgba(45,212,191,0.6)]",
     badge: "text-teal-300 bg-teal-400/10 border-teal-400/30",
     glow: "hover:shadow-[0_0_30px_-5px_rgba(45,212,191,0.25)]",
   },
   indigo: {
     border: "border-indigo-400/50 hover:border-indigo-400",
-    dot: "bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.6)]",
+    dotBg: "bg-indigo-400",
+    dotGlow: "bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,0.6)]",
     badge: "text-indigo-300 bg-indigo-400/10 border-indigo-400/30",
     glow: "hover:shadow-[0_0_30px_-5px_rgba(99,102,241,0.25)]",
   },
@@ -73,7 +75,7 @@ const Experience = () => {
 
             <div className="space-y-10">
               {experiences.map((exp, index) => {
-                const colors = colorMap[exp.color];
+                const colors = colorMap[exp.color] || colorMap.teal;
                 return (
                   <motion.div
                     key={exp.company}
@@ -83,8 +85,8 @@ const Experience = () => {
                     className="relative pl-12"
                   >
                     {/* Timeline dot */}
-                    <div className={`absolute left-0 top-5 w-7 h-7 rounded-full border-2 border-background flex items-center justify-center ${colors.dot.replace('shadow', '')}`}>
-                      <div className={`w-3 h-3 rounded-full ${colors.dot}`} />
+                    <div className={`absolute left-0 top-5 w-7 h-7 rounded-full border-2 border-background flex items-center justify-center ${colors.dotBg}`}>
+                      <div className={`w-3 h-3 rounded-full ${colors.dotGlow}`} />
                     </div>
 
                     {/* Card */}

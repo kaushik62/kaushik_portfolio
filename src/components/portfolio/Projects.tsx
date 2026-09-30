@@ -100,6 +100,18 @@ const accentMap: Record<
     glow: "group-hover:shadow-[0_0_50px_-10px_rgba(45,212,191,0.35)]",
     tag: "from-teal-400/20 to-teal-400/5",
   },
+  blue: {
+    border: "group-hover:border-blue-400/50",
+    badge: "bg-blue-400/10 text-blue-300 border-blue-400/20",
+    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(96,165,250,0.35)]",
+    tag: "from-blue-400/20 to-blue-400/5",
+  },
+  emerald: {
+    border: "group-hover:border-emerald-400/50",
+    badge: "bg-emerald-400/10 text-emerald-300 border-emerald-400/20",
+    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(52,211,153,0.35)]",
+    tag: "from-emerald-400/20 to-emerald-400/5",
+  },
   indigo: {
     border: "group-hover:border-indigo-400/50",
     badge: "bg-indigo-400/10 text-indigo-300 border-indigo-400/20",
@@ -148,7 +160,7 @@ const Projects = () => {
           {/* Projects Grid */}
           <div className="space-y-8">
             {projects.map((project, index) => {
-              const accent = accentMap[project.accent];
+              const accent = accentMap[project.accent] || accentMap.teal;
               return (
                 <motion.article
                   key={project.title}
