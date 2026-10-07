@@ -66,28 +66,7 @@ const projects = [
     github: "https://github.com/kaushik62/signal-desk-ai",
     live: "https://signal-desk-ai-taupe.vercel.app/",
     accent: "emerald",
-  },
-
-  {
-    title: "Interview AI",
-    subtitle: "Smart Interview Preparation Platform",
-    description:
-      "An AI-powered interview preparation platform designed to help users practice technical and HR interviews. Users can generate role-based questions, receive AI-generated answers, and improve confidence through real-time practice sessions with progress tracking.",
-    image:
-      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788587647/Interview_AI_qis7om.png",
-    tech: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MySQL",
-      "LLM API",
-      "Tailwind CSS",
-      "Vercel",
-    ],
-    github: "https://github.com/kaushik62/interview_ai",
-    live: "https://interview-ai-orpin-nu.vercel.app/",
-    accent: "violet",
-  },
+  },  
 ];
 
 const accentMap: Record<
