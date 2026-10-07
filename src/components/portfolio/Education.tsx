@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 
 const education = [
   {
@@ -17,19 +17,7 @@ const education = [
       "Serving as an E-Cell Coordinator, contributing to leadership, event management, and startup ecosystem development.",
     ],
   },
-  {
-    institute: "Allen Career Institute, Kota",
-    fullName: "Allen Career Institute, Kota",
-    degree: "JEE (Main & Advanced) Preparation",
-    period: "2022 – 2023",
-    color: "indigo",
-    badge: "Coaching",
-    points: [
-      "Completed intensive coaching for JEE Main and Advanced.",
-      "Developed disciplined study habits, strong time management, and problem-solving skills in a highly competitive environment.",
-      "Built analytical thinking and conceptual clarity through consistent practice and evaluation.",
-    ],
-  },
+  
   {
     institute: "Class 12th – CBSE",
     fullName: "Class XII – Science (PCM)",
