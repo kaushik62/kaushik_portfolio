@@ -1,270 +1,296 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { resume_link } from "./resume";
+import {
+  ArrowDown,
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  FileText,
+} from "lucide-react";
 
 const ROLES = [
-  "Full-Stack MERN Developer",
-  "Backend Developer",
-  "Frontend Developer",
+  "Full-Stack Developer",
+  "Software Engineer",
+  "AI Agent Developer",
 ];
 
-const PARTICLES = Array.from({ length: 40 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 24 }, (_, i) => ({
   id: i,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: Math.random() * 2.5 + 1,
-  duration: Math.random() * 12 + 8,
-  delay: Math.random() * 8,
+  x: (i * 37 + 13) % 100,
+  y: (i * 53 + 17) % 100,
+  size: (i % 3) + 1,
+  duration: 12 + (i % 7) * 2,
+  delay: (i % 8) * 0.7,
 }));
+
+const socialLinks = [
+  {
+    icon: Github,
+    href: "https://github.com/kaushik62",
+    label: "GitHub",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/kaushikgupta256/",
+    label: "LinkedIn",
+  },
+  {
+    icon: Mail,
+    href: "mailto:kaushik62041@gmail.com",
+    label: "Email",
+  },
+];
 
 const TypewriterText = ({ texts }: { texts: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const updatePreference = () => setReducedMotion(query.matches);
+
+    updatePreference();
+    query.addEventListener("change", updatePreference);
+
+    return () => query.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setDisplayText(texts[0]);
+      return;
+    }
+
     const current = texts[currentIndex];
+
+    let delay: number;
     let timeout: ReturnType<typeof setTimeout>;
 
-    if (!isDeleting) {
-      if (displayText.length < current.length) {
-        timeout = setTimeout(() => {
-          setDisplayText(current.slice(0, displayText.length + 1));
-        }, 60);
-      } else {
-        timeout = setTimeout(() => setIsDeleting(true), 2200);
-      }
+    if (!isDeleting && displayText.length < current.length) {
+      delay = 65;
+      timeout = setTimeout(() => {
+        setDisplayText(current.slice(0, displayText.length + 1));
+      }, delay);
+    } else if (!isDeleting) {
+      timeout = setTimeout(() => setIsDeleting(true), 1800);
+    } else if (displayText.length > 0) {
+      delay = 30;
+      timeout = setTimeout(() => {
+        setDisplayText(current.slice(0, displayText.length - 1));
+      }, delay);
     } else {
-      if (displayText.length > 0) {
-        timeout = setTimeout(() => {
-          setDisplayText(current.slice(0, displayText.length - 1));
-        }, 35);
-      } else {
+      timeout = setTimeout(() => {
         setIsDeleting(false);
         setCurrentIndex((prev) => (prev + 1) % texts.length);
-      }
+      }, 250);
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentIndex, texts]);
+  }, [displayText, isDeleting, currentIndex, texts, reducedMotion]);
 
   return (
-    <span>
+    <span className="inline-flex items-center">
       <span className="gradient-text">{displayText}</span>
-      <span className="animate-blink-cursor text-primary ml-0.5">|</span>
+      {!reducedMotion && (
+        <span
+          aria-hidden="true"
+          className="ml-1 inline-block h-[1.1em] w-px animate-blink-cursor bg-primary"
+        />
+      )}
     </span>
   );
 };
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: "easeOut" as const },
+  },
+};
+
 const Hero = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true });
-
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-    },
-  };
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8"
+      id="home"
       ref={ref}
+      className="relative flex min-h-[90svh] items-center overflow-hidden px-4 py-24 sm:min-h-screen sm:px-6 lg:px-8"
     >
-      {/* Dark background */}
-      <div className="absolute inset-0 -z-20 bg-[#020617]" />
-
-      {/* Radial Glow — primary */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10
-        w-[500px] h-[500px] md:w-[700px] md:h-[700px]
-        bg-teal-400/10 blur-[150px] rounded-full pointer-events-none"
-      />
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute left-1/2 top-1/3 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.08] blur-[130px] sm:h-[600px] sm:w-[600px]" />
 
-      {/* Secondary indigo glow */}
-      <div
-        className="absolute top-1/4 right-1/4 -z-10
-        w-[300px] h-[300px]
-        bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none"
-      />
+        <div className="absolute -right-24 top-1/4 h-72 w-72 rounded-full bg-violet-500/[0.06] blur-[110px]" />
 
-      {/* Particles */}
-      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        {PARTICLES.map((p) => (
-          <div
-            key={p.id}
-            className="absolute rounded-full bg-teal-400/30 animate-particle"
-            style={{
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              width: p.size,
-              height: p.size,
-              animationDuration: `${p.duration}s`,
-              animationDelay: `${p.delay}s`,
-            }}
-          />
-        ))}
+        <div
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, currentColor 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+
+        {!shouldReduceMotion &&
+          PARTICLES.map((particle) => (
+            <motion.span
+              key={particle.id}
+              className="absolute rounded-full bg-primary/30"
+              style={{
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                width: particle.size,
+                height: particle.size,
+              }}
+              animate={{
+                y: [0, -18, 0],
+                opacity: [0.2, 0.65, 0.2],
+              }}
+              transition={{
+                duration: particle.duration,
+                delay: particle.delay,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
       </div>
 
-      {/* Subtle dot grid */}
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, hsl(174 72% 56%) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-
-      <div className="w-full max-w-6xl">
+      <div className="relative mx-auto w-full max-w-6xl">
         <motion.div
-          className="max-w-3xl mx-auto text-center sm:text-left"
+          className="mx-auto max-w-4xl text-center sm:text-left"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Greeting */}
+        
+
           <motion.p
             variants={itemVariants}
-            className="text-teal-400 font-mono text-xs sm:text-sm tracking-widest mb-4 uppercase"
+            className="mb-4 text-sm font-medium tracking-wide text-muted-foreground sm:text-base"
           >
-            👋 Hi, my name is
+            Hello, I&apos;m
           </motion.p>
 
-          {/* Name */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-              font-bold leading-[1.05] text-slate-100 mb-5"
+            className="text-5xl font-bold leading-[1.08] tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            Kaushik <span className="gradient-text">Gupta</span>
+            Kaushik
+            <br className="sm:hidden" />{" "}
+            <span className="gradient-text">Gupta</span>
+            <span className="text-primary">.</span>
           </motion.h1>
 
-          {/* Typewriter Role */}
           <motion.h2
             variants={itemVariants}
-            className="text-lg sm:text-2xl md:text-3xl font-semibold text-slate-400 mb-6 min-h-[2.5rem]"
+            className="mt-6 min-h-[2.5rem] text-lg font-semibold tracking-tight text-muted-foreground sm:min-h-[3rem] sm:text-2xl md:text-3xl"
           >
             <TypewriterText texts={ROLES} />
           </motion.h2>
 
-          {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-slate-400 text-sm sm:text-base md:text-lg
-              leading-relaxed max-w-2xl mx-auto sm:mx-0 mb-10"
+            className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-muted-foreground sm:mx-0 sm:text-base sm:leading-8 md:text-lg"
           >
-            I build scalable, high-performance web applications with a strong
-            focus on clean architecture, accessibility, and real-world user
-            experience — turning complex ideas into reliable digital products.
+            I build full-stack applications, scalable backend systems, and
+            AI-powered solutions that solve real-world problems. I enjoy
+            turning ideas into reliable products through clean code, thoughtful
+            architecture, and practical engineering.
           </motion.p>
 
-          {/* CTAs */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start"
+            className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:justify-start"
           >
             <a
               href="#projects"
-              className="relative px-8 py-4 rounded-xl font-semibold
-                bg-teal-400 text-slate-900
-                shadow-[0_14px_40px_-12px_rgba(45,212,191,0.6)]
-                hover:shadow-[0_14px_50px_-8px_rgba(45,212,191,0.8)]
-                hover:scale-[1.05] active:scale-[0.98] transition-all duration-300
-                overflow-hidden group"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
-              <span className="relative z-10">View My Work</span>
-              <span className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
+              Explore My Work
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
 
             <a
               href="#contact"
-              className="px-8 py-4 rounded-xl font-semibold
-                border border-teal-400/40 text-teal-300
-                hover:bg-teal-400/10 hover:border-teal-400/70
-                hover:scale-[1.04] active:scale-[0.98] transition-all duration-300"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border bg-card/70 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
+              <Mail className="h-4 w-4" />
               Get In Touch
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1gEgGH27WLdLINMu7BHrsdlbGiXHS1XyT/view?usp=sharing"
+              href={resume_link}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl font-semibold
-                text-slate-100
-                bg-gradient-to-br from-slate-800 to-slate-900
-                border border-slate-700/60
-                hover:border-teal-400/50 hover:scale-[1.04]
-                active:scale-[0.98] transition-all duration-300"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-border bg-transparent px-6 py-3 text-sm font-semibold text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
-              📄 View Resume
+              <FileText className="h-4 w-4" />
+              View Resume
             </a>
           </motion.div>
 
-          {/* Social Links */}
           <motion.div
             variants={itemVariants}
-            className="flex gap-6 mt-10 justify-center sm:justify-start"
+            className="mt-9 flex items-center justify-center gap-3 sm:justify-start"
           >
-            {[
-              {
-                icon: Github,
-                href: "https://github.com/kaushik62",
-                label: "GitHub",
-              },
-              {
-                icon: Linkedin,
-                href: "https://www.linkedin.com/in/kaushikgupta256/",
-                label: "LinkedIn",
-              },
-              {
-                icon: Mail,
-                href: "mailto:kaushik62041@gmail.com",
-                label: "Email",
-              },
-            ].map(({ icon: Icon, href, label }) => (
+            <span className="mr-1 text-xs font-medium text-muted-foreground">
+              Find me on
+            </span>
+
+            {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={label === "Email" ? undefined : "_blank"}
+                rel={
+                  label === "Email"
+                    ? undefined
+                    : "noopener noreferrer"
+                }
                 aria-label={label}
                 title={label}
-                className="p-2.5 rounded-lg text-slate-500 
-                  border border-transparent
-                  hover:text-teal-400 hover:border-teal-400/30 hover:bg-teal-400/5
-                  hover:-translate-y-1 transition-all duration-300"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-card/60 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                <Icon className="h-[18px] w-[18px]" />
               </a>
             ))}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
+      <motion.a
+        href="#about"
+        aria-label="Scroll to About Me"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:bottom-8"
       >
-        <span className="text-xs text-slate-600 font-mono tracking-widest uppercase">
-          Scroll
+        <span className="text-[10px] font-medium uppercase tracking-[0.2em]">
+          Scroll to explore
         </span>
-        <ChevronDown className="w-5 h-5 text-teal-400/60 animate-bounce-down" />
-      </motion.div>
+        <ArrowDown className="h-4 w-4 animate-bounce" />
+      </motion.a>
     </section>
   );
 };

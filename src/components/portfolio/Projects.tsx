@@ -1,35 +1,46 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, ExternalLink, Sparkles } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  ArrowUpRight,
+  FolderCode,
+} from "lucide-react";
 
 const projects = [
   {
     title: "Eventify",
-    subtitle: "AI-Powered Event Booking Platform",
+    subtitle: "Event Booking & Management Platform",
     description:
-      "An AI-powered event booking platform that allows users to discover and book events, organizers to create and manage events, and admins to oversee the platform. Built with a full-stack architecture featuring secure authentication, role-based access control, and online payments.",
+      "A full-stack event booking platform where users discover and book events, organizers manage listings, and administrators oversee platform activity. Includes secure authentication, role-based access control, online payments, and event management workflows.",
     image:
       "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1788878878/event_booking_m7qhys.png",
+    imageAlt: "Eventify event booking platform interface",
     tech: [
       "Next.js",
+      "TypeScript",
       "Node.js",
       "Express.js",
       "PostgreSQL",
-      "TypeScript",
       "Tailwind CSS",
+      "LangGraph",
+      "Agentic AI",
       "Razorpay",
+      "Groq API",
     ],
     github: "https://github.com/kaushik62/eventify",
     live: "https://eventify-sigma-dusky.vercel.app/",
     accent: "teal",
+    number: "01",
   },
-
   {
     title: "Short Link",
-    subtitle: "URL Shortener & Link Management Platform",
+    subtitle: "URL Shortener & Link Management",
     description:
-      "A full-stack URL shortening platform that converts long URLs into compact, shareable links. Features secure user authentication, fast redirection, and Redis-based caching to optimize link retrieval and reduce database queries. Built with PostgreSQL, Redis, and Docker for efficient and scalable link management.",
-    image: "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1790802203/short_link_gszm7l.png",
+      "A URL shortening platform that transforms long URLs into compact, shareable links. Implements secure authentication, fast redirection, PostgreSQL-backed link storage, and Redis caching to improve retrieval performance and reduce repeated database queries.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1790802203/short_link_gszm7l.png",
+    imageAlt: "Short Link URL management dashboard",
     tech: [
       "React.js",
       "Tailwind CSS",
@@ -43,14 +54,16 @@ const projects = [
     github: "https://github.com/kaushik62/shortlink",
     live: "https://shortlink-alpha-eight.vercel.app/",
     accent: "blue",
+    number: "02",
   },
-
   {
     title: "Signal Desk AI",
-    subtitle: "AI-Powered Lead Management & Sales Automation",
+    subtitle: "Lead Management & Sales Automation",
     description:
-      "An AI-powered sales automation platform that helps businesses manage leads, streamline follow-ups, and automate customer communication. Features AI-generated personalized follow-up emails, background email processing with BullMQ and Redis, and an interactive dashboard to track lead activity. Built with PostgreSQL, Node.js, and Docker for reliable and scalable business automation.",
-    image: "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1790802103/Signal_Desk_AI_r2kgvy.png",
+      "A business automation platform that helps teams manage leads and streamline customer follow-ups. Features AI-generated personalized emails, background job processing with BullMQ and Redis, and a dashboard for tracking lead activity and sales workflows.",
+    image:
+      "https://res.cloudinary.com/dwvwvzwcv/image/upload/v1790802103/Signal_Desk_AI_r2kgvy.png",
+    imageAlt: "Signal Desk AI lead management dashboard",
     tech: [
       "React.js",
       "Vite",
@@ -65,174 +78,194 @@ const projects = [
     ],
     github: "https://github.com/kaushik62/signal-desk-ai",
     live: "https://signal-desk-ai-taupe.vercel.app/",
-    accent: "emerald",
-  },  
+    accent: "violet",
+    number: "03",
+  },
 ];
 
-const accentMap: Record<
-  string,
-  { border: string; badge: string; glow: string; tag: string }
-> = {
+const accentStyles = {
   teal: {
-    border: "group-hover:border-teal-400/50",
-    badge: "bg-teal-400/10 text-teal-300 border-teal-400/20",
-    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(45,212,191,0.35)]",
-    tag: "from-teal-400/20 to-teal-400/5",
+    label: "text-teal-600 dark:text-teal-400",
+    border: "hover:border-teal-500/40",
+    badge:
+      "border-teal-500/15 bg-teal-500/[0.04] text-teal-700 dark:text-teal-300",
+    dot: "bg-teal-500",
   },
   blue: {
-    border: "group-hover:border-blue-400/50",
-    badge: "bg-blue-400/10 text-blue-300 border-blue-400/20",
-    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(96,165,250,0.35)]",
-    tag: "from-blue-400/20 to-blue-400/5",
-  },
-  emerald: {
-    border: "group-hover:border-emerald-400/50",
-    badge: "bg-emerald-400/10 text-emerald-300 border-emerald-400/20",
-    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(52,211,153,0.35)]",
-    tag: "from-emerald-400/20 to-emerald-400/5",
-  },
-  indigo: {
-    border: "group-hover:border-indigo-400/50",
-    badge: "bg-indigo-400/10 text-indigo-300 border-indigo-400/20",
-    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(99,102,241,0.35)]",
-    tag: "from-indigo-400/20 to-indigo-400/5",
+    label: "text-blue-600 dark:text-blue-400",
+    border: "hover:border-blue-500/40",
+    badge:
+      "border-blue-500/15 bg-blue-500/[0.04] text-blue-700 dark:text-blue-300",
+    dot: "bg-blue-500",
   },
   violet: {
-    border: "group-hover:border-violet-400/50",
-    badge: "bg-violet-400/10 text-violet-300 border-violet-400/20",
-    glow: "group-hover:shadow-[0_0_50px_-10px_rgba(167,139,250,0.35)]",
-    tag: "from-violet-400/20 to-violet-400/5",
+    label: "text-violet-600 dark:text-violet-400",
+    border: "hover:border-violet-500/40",
+    badge:
+      "border-violet-500/15 bg-violet-500/[0.04] text-violet-700 dark:text-violet-300",
+    dot: "bg-violet-500",
   },
 };
 
 const Projects = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement | null>(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-80px",
+  });
 
   return (
     <section
       id="projects"
       ref={ref}
-      className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
         >
-          {/* Header */}
-          <header className="mb-16">
-            <h2 className="section-heading flex items-center gap-3 mb-4">
-              <span className="text-primary font-mono text-base sm:text-lg">
-                04.
+          <header className="mb-12 sm:mb-16">
+            <div className="mb-3 flex items-center gap-3">
+              <span className="font-mono text-sm text-primary">04</span>
+              <span className="h-px w-8 bg-primary/50" />
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                Selected Work
               </span>
-              <span className="text-xl sm:text-2xl md:text-3xl">Projects</span>
-              <span className="hidden sm:block h-px bg-gradient-to-r from-border to-transparent flex-1 max-w-xs" />
+            </div>
+
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Projects<span className="text-primary">.</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl">
-              Selected projects that demonstrate my approach to building
-              scalable, well-structured, and user-focused applications.
+
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              A selection of applications I've built, combining frontend
+              engineering, backend architecture, data management, and
+              practical automation.
             </p>
           </header>
 
-          {/* Projects Grid */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {projects.map((project, index) => {
-              const accent = accentMap[project.accent] || accentMap.teal;
+              const styles = accentStyles[project.accent];
+
               return (
                 <motion.article
                   key={project.title}
-                  initial={{ opacity: 0, y: 32 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={
+                    isInView
+                      ? { opacity: 1, y: 0 }
+                      : { opacity: 0, y: 24 }
+                  }
                   transition={{
-                    delay: index * 0.15,
-                    duration: 0.7,
-                    ease: [0.22, 1, 0.36, 1],
+                    duration: 0.55,
+                    delay: 0.12 * index,
+                    ease: "easeOut",
                   }}
-                  className={`group rounded-2xl border border-border bg-card/40 backdrop-blur-sm overflow-hidden
-                    ${accent.border} ${accent.glow}
-                    transition-all duration-400`}
+                  className={`group overflow-hidden rounded-2xl border border-border/70 bg-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/[0.03] dark:hover:shadow-black/10 ${styles.border}`}
                 >
-                  <div
-                    className={`grid lg:grid-cols-2 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
-                  >
-                    {/* Image */}
-                    <div
-                      className={`relative overflow-hidden ${index % 2 === 1 ? "lg:col-start-2" : ""}`}
+                  <div className="grid grid-cols-1 lg:grid-cols-2">
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${project.title} live demo`}
+                      className={`relative block overflow-hidden bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary ${index % 2 === 1
+                        ? "lg:order-2"
+                        : "lg:order-1"
+                        }`}
                     >
-                      <div className="overflow-hidden aspect-video lg:aspect-auto lg:h-full min-h-[220px]">
+                      <div className="relative aspect-[16/10] h-full min-h-[220px] overflow-hidden lg:min-h-[340px]">
                         <img
                           src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                          alt={project.imageAlt}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.025]"
                         />
-                        {/* Overlay gradient */}
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-r ${index % 2 === 1 ? "lg:from-transparent lg:to-card/60" : "lg:from-card/60 lg:to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                        />
-                      </div>
-                    </div>
 
-                    {/* Content */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-30" />
+
+                        <span className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-lg border border-white/20 bg-black/55 px-3 py-2 text-xs font-medium text-white opacity-100 backdrop-blur-md transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100">
+                          View Project
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </span>
+                      </div>
+                    </a>
+
                     <div
-                      className={`flex flex-col justify-center p-6 sm:p-8 lg:p-10 space-y-4 ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}
+                      className={`flex flex-col justify-center gap-5 p-5 sm:p-7 lg:p-9 ${index % 2 === 1
+                        ? "lg:order-1"
+                        : "lg:order-2"
+                        }`}
                     >
-                      {/* Featured badge */}
-                      <div className="flex items-center gap-2">
-                        <Sparkles className="w-3.5 h-3.5 text-primary" />
-                        <span className="text-primary font-mono text-xs uppercase tracking-wider">
-                          Featured Project
+                      <div className="flex items-center justify-between gap-3">
+                        <span
+                          className={`font-mono text-xs font-medium ${styles.label}`}
+                        >
+                          PROJECT / {project.number}
                         </span>
+
+                        <FolderCode
+                          className="h-4 w-4 text-muted-foreground/60"
+                          strokeWidth={1.7}
+                        />
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {project.title}
-                        <span className="block text-sm font-normal text-muted-foreground mt-1">
-                          {project.subtitle}
-                        </span>
-                      </h3>
+                      <div>
+                        <h3 className="text-xl font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary sm:text-2xl">
+                          {project.title}
+                        </h3>
 
-                      {/* Description card */}
-                      <div className="rounded-xl bg-background/60 border border-border/50 p-4">
-                        <p className="text-muted-foreground text-sm leading-relaxed">
-                          {project.description}
+                        <p className="mt-1.5 text-sm font-medium text-muted-foreground">
+                          {project.subtitle}
                         </p>
                       </div>
 
-                      {/* Tech stack */}
-                      <ul className="flex flex-wrap gap-2">
-                        {project.tech.map((tech) => (
-                          <li
-                            key={tech}
-                            className={`px-2.5 py-1 rounded-lg border text-xs font-mono transition-all duration-200 ${accent.badge}`}
-                          >
-                            {tech}
-                          </li>
-                        ))}
-                      </ul>
+                      <p className="text-sm leading-7 text-muted-foreground">
+                        {project.description}
+                      </p>
 
-                      {/* Links */}
-                      <div className="flex items-center gap-4 pt-1">
+                      <div>
+                        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                          Technologies
+                        </p>
+
+                        <ul className="flex flex-wrap gap-2">
+                          {project.tech.map((tech) => (
+                            <li
+                              key={tech}
+                              className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium ${styles.badge}`}
+                            >
+                              {tech}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-3 border-t border-border/70 pt-4">
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${project.title} GitHub`}
-                          className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 text-sm font-medium"
+                          aria-label={`View ${project.title} source code on GitHub`}
+                          className="inline-flex min-h-10 items-center gap-2 rounded-lg border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                         >
-                          <Github size={18} />
-                          <span>Source</span>
+                          <Github className="h-4 w-4" />
+                          Source Code
                         </a>
+
                         <a
                           href={project.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${project.title} Live Demo`}
-                          className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 text-sm font-medium"
+                          aria-label={`Open ${project.title} live demo`}
+                          className="inline-flex min-h-10 items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                         >
-                          <ExternalLink size={18} />
-                          <span>Live Demo</span>
+                          Live Demo
+                          <ExternalLink className="h-3.5 w-3.5" />
                         </a>
                       </div>
                     </div>

@@ -1,159 +1,202 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Github, Linkedin, ArrowRight } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  ArrowUpRight,
+  ArrowRight,
+  MessageCircle,
+} from "lucide-react";
+
+const contactLinks = [
+  {
+    label: "LinkedIn",
+    description: "Connect professionally",
+    href: "https://www.linkedin.com/in/kaushikgupta256/",
+    icon: Linkedin,
+  },
+  {
+    label: "GitHub",
+    description: "Explore my projects",
+    href: "https://github.com/kaushik62",
+    icon: Github,
+  },
+];
 
 const Contact = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-120px" });
+  const ref = useRef<HTMLElement | null>(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-80px",
+  });
+  const shouldReduceMotion = useReducedMotion();
+
+  const entrance = (delay = 0) => ({
+    initial: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : 18,
+    },
+    animate: isInView
+      ? { opacity: 1, y: 0 }
+      : { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
+    transition: {
+      duration: shouldReduceMotion ? 0 : 0.55,
+      delay: shouldReduceMotion ? 0 : delay,
+      ease: "easeOut" as const,
+    },
+  });
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="relative py-24 sm:py-28 md:py-36 px-4 sm:px-6 overflow-hidden"
+      className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-28"
     >
-      {/* Background Gradients */}
-      <div className="absolute inset-0 -z-20">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 
-          w-[300px] h-[300px] sm:w-[450px] sm:h-[450px]
-          bg-primary/15 blur-[130px] rounded-full" />
-        <div className="absolute bottom-1/4 right-1/3
-          w-[250px] h-[250px] sm:w-[350px] sm:h-[350px]
-          bg-indigo-500/15 blur-[120px] rounded-full" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
+      >
+        <div className="absolute left-1/2 top-1/3 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary/[0.07] blur-[110px] sm:h-[450px] sm:w-[450px]" />
+
+        <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-violet-500/[0.05] blur-[100px] sm:h-[350px] sm:w-[350px]" />
+
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, currentColor 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+          }}
+        />
       </div>
 
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.03]"
-        style={{
-          backgroundImage: "radial-gradient(circle, hsl(174 72% 56%) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-5xl mx-auto"
-      >
-        {/* Gradient border wrapper */}
-        <div
-          className="relative rounded-3xl p-[1.5px]"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(174 72% 56% / 0.6), hsl(199 89% 48% / 0.4), hsl(258 90% 66% / 0.5))",
-          }}
+      <div className="relative mx-auto max-w-6xl">
+        <motion.div
+          {...entrance()}
+          className="mb-12 sm:mb-16"
         >
-          <div className="rounded-[22px] bg-background/80 backdrop-blur-xl px-6 sm:px-10 md:px-14 py-10 sm:py-14 md:py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              
-              {/* Left — Headline */}
-              <div className="text-center lg:text-left">
-                {/* Availability badge */}
-                <div className="inline-flex items-center justify-center lg:justify-start gap-2
-                  px-4 py-2 mb-6 rounded-full text-xs sm:text-sm font-mono
-                  border border-primary/30 bg-primary/10 text-primary"
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
-                  </span>
-                  Available for Opportunities
-                </div>
+          <div className="mb-3 flex items-center gap-3">
+            <span className="font-mono text-sm text-primary">05</span>
+            <span className="h-px w-8 bg-primary/50" />
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Get In Touch
+            </span>
+          </div>
 
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
-                  Let's Build{" "}
-                  <span className="block">
-                    <span className="bg-gradient-to-r from-primary to-indigo-400 bg-clip-text text-transparent">
-                      Something Remarkable
-                    </span>
-                  </span>
-                </h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            Let&apos;s Connect<span className="text-primary">.</span>
+          </h2>
 
-                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
-                  I'm a Full Stack Developer focused on crafting scalable,
-                  high-performance web applications with exceptional user experience.
-                  If you're building something meaningful, I'd love to be part of it.
-                </p>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+            Have an opportunity, an interesting project, or an idea worth
+            exploring? I&apos;d be happy to hear from you.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8">
+          <motion.div
+            {...entrance(0.1)}
+            className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/70 bg-card p-6 sm:p-9 lg:col-span-3 lg:p-10"
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/[0.06] blur-3xl"
+            />
+
+            <div className="relative">
+              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-2 text-xs font-medium text-primary">
+                <MessageCircle className="h-3.5 w-3.5" />
+                Open to meaningful opportunities
               </div>
 
-              {/* Right — CTA Card */}
-              <div className="relative w-full max-w-md mx-auto lg:max-w-none">
-                <div className="rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-6 sm:p-8 shadow-2xl">
-                  <p className="uppercase tracking-widest text-xs text-muted-foreground mb-2 font-mono">
-                    Contact
-                  </p>
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-2">
-                    Start a Conversation
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-7 leading-relaxed">
-                    Whether it's a job opportunity, freelance project, or
-                    collaboration — I usually respond within 24 hours.
-                  </p>
+              <h3 className="max-w-lg text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+                Have something in mind?
+                <span className="mt-1 block text-muted-foreground">
+                  Let&apos;s talk about it.
+                </span>
+              </h3>
 
-                  {/* Primary CTA — Email */}
-                  <motion.a
-                    href="mailto:kaushik62041@gmail.com"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="flex w-full items-center justify-center gap-2
-                      px-6 py-4 rounded-xl mb-3
-                      text-base font-semibold
-                      bg-gradient-to-r from-primary to-teal-500
-                      text-slate-900
-                      shadow-[0_8px_30px_-8px_rgba(45,212,191,0.6)]
-                      hover:shadow-[0_10px_40px_-8px_rgba(45,212,191,0.8)]
-                      transition-all duration-200"
-                  >
-                    <Mail size={18} />
-                    Say Hello 👋
-                    <ArrowRight size={16} className="ml-auto" />
-                  </motion.a>
+              <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground sm:text-base">
+                I&apos;m interested in software engineering, full-stack
+                development, and AI-powered business automation. Whether
+                you&apos;re hiring, building a product, or exploring a
+                collaboration, feel free to reach out.
+              </p>
+            </div>
 
-                  {/* Secondary CTAs */}
-                  <div className="grid grid-cols-2 gap-3 mb-5">
-                    <motion.a
-                      href="https://www.linkedin.com/in/kaushikgupta256/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="flex items-center justify-center gap-2
-                        px-4 py-3 rounded-xl text-sm font-medium
-                        border border-border text-muted-foreground
-                        hover:text-primary hover:border-primary/40 hover:bg-primary/5
-                        transition-all duration-200"
-                    >
-                      <Linkedin size={16} />
-                      LinkedIn
-                    </motion.a>
-                    <motion.a
-                      href="https://github.com/kaushik62"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="flex items-center justify-center gap-2
-                        px-4 py-3 rounded-xl text-sm font-medium
-                        border border-border text-muted-foreground
-                        hover:text-primary hover:border-primary/40 hover:bg-primary/5
-                        transition-all duration-200"
-                    >
-                      <Github size={16} />
-                      GitHub
-                    </motion.a>
+            <div className="relative mt-9">
+              <a
+                href="mailto:kaushik62041@gmail.com"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:w-auto"
+              >
+                <Mail className="h-4 w-4" />
+                Send Me an Email
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+
+              <p className="mt-4 break-all text-xs text-muted-foreground">
+                kaushik62041@gmail.com
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            {...entrance(0.2)}
+            className="flex flex-col rounded-2xl border border-border/70 bg-card p-6 sm:p-8 lg:col-span-2"
+          >
+            <div className="mb-6">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                Find me online
+              </p>
+
+              <h3 className="mt-2 text-xl font-semibold text-foreground">
+                Let&apos;s stay connected
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Explore my work or connect with me professionally.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {contactLinks.map(({ label, description, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${label}: ${description}`}
+                  className="group flex items-center gap-4 rounded-xl border border-border/70 bg-background/50 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
 
-                  <p className="text-center text-xs text-muted-foreground">
-                    No spam. Just meaningful conversations.
-                  </p>
-                </div>
-              </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-foreground">
+                      {label}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {description}
+                    </p>
+                  </div>
+
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+                </a>
+              ))}
             </div>
-          </div>
+
+            <div className="mt-auto pt-7">
+              <div className="h-px bg-border/70" />
+              <p className="pt-5 text-xs leading-5 text-muted-foreground">
+                I welcome thoughtful conversations, professional connections,
+                and opportunities to build useful products.
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

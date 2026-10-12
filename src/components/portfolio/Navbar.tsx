@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollProgress from "./ScrollProgress";
+import { resume_link } from "./resume";
 
 const navItems = [
   { label: "About", id: "about" },
@@ -9,9 +10,6 @@ const navItems = [
   { label: "Projects", id: "projects" },
   { label: "Contact", id: "contact" },
 ];
-
-const RESUME_URL =
-  "https://drive.google.com/file/d/1gEgGH27WLdLINMu7BHrsdlbGiXHS1XyT/view?usp=sharing";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -312,7 +310,7 @@ const Navbar = () => {
               }}
             >
               <a
-                href={RESUME_URL}
+                href={resume_link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-2 px-4 py-2 border border-primary/50 text-primary rounded-lg hover:bg-primary/10 hover:border-primary hover:scale-[1.04] active:scale-[0.98] transition-all duration-200 text-sm font-medium"
@@ -453,7 +451,7 @@ const Navbar = () => {
                   {/* Resume */}
                   <li className="pt-3">
                     <a
-                      href={RESUME_URL}
+                      href={resume_link}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() =>
