@@ -214,8 +214,6 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* // This is comment */}
-
       <motion.a
         href="#about"
         aria-label="Scroll to About Me"
