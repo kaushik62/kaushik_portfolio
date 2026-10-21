@@ -211,7 +211,7 @@ const Hero = () => {
               </a>
             ))}
           </motion.div>
-        </motion.div>
+        </motion.div>    
       </div>
 
       <motion.a
