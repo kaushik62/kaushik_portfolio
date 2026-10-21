@@ -211,10 +211,8 @@ const Hero = () => {
               </a>
             ))}
           </motion.div>
-        </motion.div>
+        </motion.div>    
       </div>
-
-      {/* // This is for animation */}
 
       <motion.a
         href="#about"
